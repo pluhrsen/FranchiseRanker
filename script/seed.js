@@ -38,6 +38,24 @@ async function seed() {
       year: 1980,
       director: 'Richard Marquand',
       franchiseId: 1
+    }),
+    Movie.create({
+      title: 'Iron Man',
+      year: 2008,
+      director: 'Jon Favreau',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'The Incredible Hulk',
+      year: 2008,
+      director: 'Louis Leterrier',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Iron Man 2',
+      year: 2010,
+      director: 'Jon Favreau',
+      franchiseId: 2
     })
   ])
 
