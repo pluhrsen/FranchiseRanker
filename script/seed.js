@@ -1,18 +1,46 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {Franchise, Movie} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
-  const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
+  const franchise = await Promise.all([
+    Franchise.create({
+      title: 'Star Wars',
+      imageUrl:
+        'https://logos-download.com/wp-content/uploads/2016/09/Star_Wars_logo-1.png'
+    }),
+    Franchise.create({
+      title: 'Marvel Cinematic Universe',
+      imageUrl:
+        'https://www.austinbooks.com/wp-content/uploads/2016/07/marvelcinematicuniverse.png'
+    })
   ])
 
-  console.log(`seeded ${users.length} users`)
+  const movie = await Promise.all([
+    Movie.create({
+      title: 'A New Hope',
+      year: 1977,
+      director: 'George Lucas',
+      franchiseId: 1
+    }),
+    Movie.create({
+      title: 'The Empire Strikes Back',
+      year: 1980,
+      director: 'Irvin Kershner',
+      franchiseId: 1
+    }),
+    Movie.create({
+      title: 'Return of the Jedi',
+      year: 1980,
+      director: 'Richard Marquand',
+      franchiseId: 1
+    })
+  ])
+
   console.log(`seeded successfully`)
 }
 
