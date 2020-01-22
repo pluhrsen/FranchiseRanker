@@ -17,9 +17,7 @@ export const fetchMovieFranchise = franchiseId => {
   return async dispatch => {
     try {
       const response = await axios.get(`/api/movies/${franchiseId}`)
-      console.log('response?', response)
       const action = setMovieFranchise(response.data)
-      console.log('action?', response.data)
       dispatch(action)
     } catch (err) {
       console.error(err)

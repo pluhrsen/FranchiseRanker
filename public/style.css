@@ -24,3 +24,51 @@ img {
   width: auto;
   height: 150px;
 }
+
+.drag {
+  margin-right: 15px;
+  cursor: move;
+}
+
+.movie-list {
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-list main {
+  background-color: #383838;
+  color: #fff;
+  padding: 10px;
+}
+
+.movie-list ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.movie-list ul li {
+  background-color: #383838;
+  padding: 10px 20px;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  line-height: 1;
+  border: 2px solid white;
+}
+
+.movie-list li .drag {
+  margin-right: 15px;
+  cursor: move;
+}
+
+.movie-list li svg {
+  height: 2rem;
+  color: #fff;
+}
