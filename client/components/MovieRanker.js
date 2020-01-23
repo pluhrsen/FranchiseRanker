@@ -3,15 +3,10 @@ import {connect} from 'react-redux'
 import {fetchMovieFranchise, updateMovieRanks} from '../store/movie'
 import {fetchSingleFranchise} from '../store/singleFranchise'
 
-let startObjs = [
-  {rank: 2, id: 2, title: 'A New Hope'},
-  {rank: 1, id: 1, title: 'Empire Strikes Back'},
-  {rank: 3, id: 3, title: 'Return of the Jedi'}
-]
-
 class MovieRanker extends Component {
   constructor(props) {
     super(props)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   state = {
     items: []
@@ -40,15 +35,17 @@ class MovieRanker extends Component {
     // items[index].rank = index + 1
 
     ///ex rank: 2 so need to update every instance 2index (3rd item) to length//
+    // for (let i = 0; i < items.length; i++) {
+    //   if (items[i].rank !== i + 1) {
+    //     items[i].rank = i + 1
+    //   }
+    // }
+
     for (let i = 0; i < items.length; i++) {
-      if (items[i].rank !== i + 1) {
-        items[i].rank = i + 1
-      }
+      items[i].rank = i + 1
     }
 
-    const franchiseId = this.props.location.pathname.slice(12)
-
-    this.props.updateMovieRanks({list: items, franchiseId})
+    // this.props.updateMovieRanks({list: items, franchiseId})
 
     this.setState({items})
   }
@@ -77,6 +74,19 @@ class MovieRanker extends Component {
       this.setState({items: newItems})
     }
   }
+  handleSubmit(event) {
+    event.preventDefault()
+    try {
+      let items = this.state.items
+      const franchiseId = this.props.location.pathname.slice(12)
+      for (let i = 0; i < items.length; i++) {
+        items[i].rank = i + 1
+      }
+      this.props.updateMovieRanks({list: items, franchiseId})
+    } catch (err) {
+      console.log(err)
+    }
+  }
   render() {
     console.log('render?', this)
     const franchise = this.props.franchise
@@ -101,6 +111,11 @@ class MovieRanker extends Component {
                 </li>
               ))}
             </ul>
+            <form onSubmit={this.handleSubmit}>
+              <button type="submit" value="Submit">
+                Save Ranking
+              </button>
+            </form>
           </main>
         </div>
       </div>

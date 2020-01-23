@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Main, Franchises, MovieRanker} from './components'
+import {Main, Franchises, MovieRanker, MovieGraph} from './components'
 import {me} from './store'
 
 /**
@@ -19,8 +19,9 @@ class Routes extends Component {
     return (
       <Switch>
         <Route exact path="/franchises" component={Franchises} />
-        <Route path="/franchises/:franchiseId" component={MovieRanker} />
+        <Route exact path="/franchises/:franchiseId" component={MovieRanker} />
         <Route path="/home" component={Main} />
+        <Route path="/franchises/:franchiseId/graph" component={MovieGraph} />
         {/* Routes placed here are available to all visitors */}
         {/* <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} /> */}

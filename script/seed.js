@@ -132,6 +132,90 @@ async function seed() {
       year: 2014,
       director: 'Russo Brothers',
       franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Guardians of the Galaxy',
+      year: 2014,
+      director: 'James Gunn',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Avengers: Age of Ultron',
+      year: 2015,
+      director: 'Joss Whedon',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Ant-Man',
+      year: 2015,
+      director: 'Peyton Reed',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Captain America: Civil War',
+      year: 2016,
+      director: 'Russo Brothers',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Doctor Strange',
+      year: 2016,
+      director: 'Russo Brothers',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Guardians of the Galaxy Vol 2',
+      year: 2017,
+      director: 'James Gunn',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Spider-Man Homecoming',
+      year: 2017,
+      director: 'Jon Watts',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Thor: Ragnarok',
+      year: 2017,
+      director: 'Taika Waititi',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Black Panther',
+      year: 2018,
+      director: 'Ryan Coogler',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Avengers: Infinity War',
+      year: 2018,
+      director: 'Russo Brothers',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Ant-Man and the Wasp',
+      year: 2018,
+      director: 'Peyton Reed',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Captain Marvel',
+      year: 2019,
+      director: 'Russo Brothers',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Avengers: Endgame',
+      year: 2019,
+      director: 'Russo Brothers',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Spider-Man: Far from Home',
+      year: 2019,
+      director: 'Jon Watts',
+      franchiseId: 2
     })
   ])
 
