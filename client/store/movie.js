@@ -33,7 +33,7 @@ export const fetchMovieFranchise = franchiseId => {
 
 export const updateMovieRanks = info => {
   return async dispatch => {
-    const response = await axios.put('/api/movies/', info)
+    const response = await axios.put(`/api/movies/${info.franchiseId}`, info)
     const action = updateMovieFranchise(response.data)
     dispatch(action)
   }

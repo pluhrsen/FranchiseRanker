@@ -9,8 +9,11 @@ let startObjs = [
 ]
 
 class MovieRanker extends Component {
+  constructor(props) {
+    super(props)
+  }
   state = {
-    items: startObjs
+    items: []
   }
 
   onDragStart = (e, index) => {
@@ -43,18 +46,9 @@ class MovieRanker extends Component {
       }
     }
 
-    // if (newRank <= items[index].rank) {
-    //   items[index].rank = newRank
-    //   for (let i = newRank; i < items.length; i++) {
-    //     items[i].rank = i + 1
-    //   }
-    // } else {
-    //   items[index].rank = newRank
-    //   for (let j = index; j >= 0; j--) {
-    //     items[j].rank = j - 1
-    //   }
-    // }
-    this.props.updateMovieRanks({list: items})
+    const franchiseId = this.props.location.pathname.slice(12)
+
+    this.props.updateMovieRanks({list: items, franchiseId})
 
     this.setState({items})
   }
@@ -64,9 +58,24 @@ class MovieRanker extends Component {
   }
   componentDidMount() {
     this.props.fetchMovieFranchise(this.props.location.pathname.slice(12))
+    // if (this.props.movies) {
+    //   this.props.movies.map(movie => {
+    //     movieArr.push(movie)
+    //   })
+    // }
+    // this.setState({movies: movieArr})
+    // this.setState((state, props) => ({
+    //   items: this.props.movies
+    // }))
+    // this.setState({items: this.props.movies})
+  }
+  componentDidUpdate() {
+    if (this.state.items.length < 1) {
+      this.setState({items: this.props.movies})
+    }
   }
   render() {
-    console.log('props?', this.state)
+    console.log('render?', this)
     return (
       <div className="movie-list">
         <main>

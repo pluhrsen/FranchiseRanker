@@ -14,9 +14,8 @@ router.get('/:franchiseId', async (req, res, next) => {
   }
 })
 
-router.put('/', async (req, res, next) => {
+router.put('/:franchiseId', async (req, res, next) => {
   try {
-    let updateMovie
     ///req.body = {list:[{id, rank}, {id, rank}]}
     for (let i = 0; i < req.body.list.length; i++) {
       let curMovieObj = req.body.list[i]
@@ -26,9 +25,13 @@ router.put('/', async (req, res, next) => {
         },
         {where: {id: curMovieObj.id}}
       )
-      updateMovie = [a, b]
     }
-    res.send(updateMovie)
+    const franchiseMovies = await Movie.findAll({
+      where: {franchiseId: req.params.franchiseId},
+      include: [{model: Franchise}]
+    })
+
+    res.send(franchiseMovies)
   } catch (err) {
     next(err)
   }
