@@ -13,3 +13,32 @@ router.get('/:franchiseId', async (req, res, next) => {
     next(err)
   }
 })
+
+router.put('/', async (req, res, next) => {
+  try {
+    ///req.body = {list:[{id, rank}, {id, rank}]}
+    for (let i = 0; i < req.body.list.length; i++) {
+      let curMovieObj = req.body.list[i]
+      let [a, b] = await Movie.update(
+        {
+          rank: curMovieObj.rank
+        },
+        {where: {id: curMovieObj.id}}
+      )
+    }
+    res.send('successful update')
+  } catch (err) {
+    next(err)
+  }
+})
+
+// function updateRow(id, rank) {
+//   return Movie.update(
+//     {
+//       rank
+//     },
+//     {
+//       where: {id}
+//     }
+//   )
+// }

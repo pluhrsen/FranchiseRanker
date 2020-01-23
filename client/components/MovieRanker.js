@@ -14,9 +14,18 @@ let startItems = [
   'The Rise of Skywalker'
 ]
 
+let startObjs = [
+  {rank: 1, title: 'The Phantom Menace'},
+  {rank: 2, title: 'Attack of the Clones'},
+  {rank: 3, title: 'Revenge of the Sith'},
+  {rank: 4, title: 'A New Hope'},
+  {rank: 5, title: 'Empire Strikes Back'},
+  {rank: 6, title: 'Return of the Jedi'}
+]
+
 class MovieRanker extends Component {
   state = {
-    items: startItems
+    items: startObjs
   }
 
   onDragStart = (e, index) => {
@@ -50,20 +59,21 @@ class MovieRanker extends Component {
     this.props.fetchMovieFranchise(this.props.location.pathname.slice(12))
   }
   render() {
+    console.log('props?', this.state)
     return (
       <div className="movie-list">
         <main>
           <h3>Franchise Title</h3>
           <ul>
             {this.state.items.map((item, idx) => (
-              <li key={item} onDragOver={() => this.onDragOver(idx)}>
+              <li key={item.rank} onDragOver={() => this.onDragOver(idx)}>
                 <div
                   className="drag"
                   draggable
                   onDragStart={e => this.onDragStart(e, idx)}
                   onDragEnd={this.onDragEnd}
                 >
-                  <span className="content">{item}</span>
+                  <span className="content">{item.title}</span>
                 </div>
               </li>
             ))}

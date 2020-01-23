@@ -28,4 +28,10 @@ const Movie = db.define('movie', {
   }
 })
 
+// Movie.addHook('beforeValidate', movie => {
+//   if(movie.rank === null) {
+
+//   }
+// })
+
 module.exports = Movie
