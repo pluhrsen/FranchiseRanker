@@ -7,7 +7,7 @@ import {logout} from '../store'
 ///previous props {handleClick, isLoggedIn} ////
 
 const Navbar = () => (
-  <div>
+  <div id="navbar">
     <h1>Movie Ranker</h1>
     <nav>
       <div>

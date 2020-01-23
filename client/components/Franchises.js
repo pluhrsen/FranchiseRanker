@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchFranchises} from '../store/franchise'
+import {Link} from 'react-router-dom'
 
 class Franchises extends Component {
   componentDidMount() {
@@ -10,13 +11,14 @@ class Franchises extends Component {
   render() {
     const franchises = this.props.franchises
     return (
-      <div>
-        <div>Franchises</div>
+      <div id="franchise-page">
+        {/* <div>Franchises</div> */}
         {franchises.map(franchise => {
           return (
-            <div key={franchise.id}>
-              <img src={franchise.imageUrl} />
-              <h3>{franchise.title}</h3>
+            <div key={franchise.id} id="franchise-link">
+              <Link to={`/franchises/${franchise.id}`}>
+                <img src={franchise.imageUrl} />
+              </Link>
             </div>
           )
         })}

@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  background-color: #383838;
 }
 
 a {
@@ -13,6 +14,12 @@ label {
 nav a {
   display: inline-block;
   margin: 1em;
+  color: #fff;
+}
+
+#navbar {
+  background-color: #383838;
+  color: #fff;
 }
 
 form div {
@@ -22,7 +29,7 @@ form div {
 
 img {
   width: auto;
-  height: 150px;
+  height: 120px;
 }
 
 .drag {
@@ -44,7 +51,6 @@ img {
 .movie-list main {
   background-color: #383838;
   color: #fff;
-  padding: 10px;
 }
 
 .movie-list ul {
@@ -71,4 +77,19 @@ img {
 .movie-list li svg {
   height: 2rem;
   color: #fff;
+}
+
+#movie-list-page {
+  background-color: #383838;
+}
+
+#franchise-link {
+  display: flex;
+  margin: 15px;
+  padding: 5px;
+}
+
+#franchise-page {
+  display: flex;
+  flex-direction: column;
 }

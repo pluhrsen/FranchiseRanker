@@ -40,7 +40,6 @@ class MovieRanker extends Component {
     // items[index].rank = index + 1
 
     ///ex rank: 2 so need to update every instance 2index (3rd item) to length//
-    let newRank = index + 1
     for (let i = 0; i < items.length; i++) {
       if (items[i].rank !== i + 1) {
         items[i].rank = i + 1
@@ -72,37 +71,54 @@ class MovieRanker extends Component {
     // this.setState({items: this.props.movies})
   }
   componentDidUpdate() {
-    if (this.state.items.length < 1) {
-      this.setState({items: this.props.movies})
+    if (this.props.movies && this.state.items !== this.props.movies) {
+      let newItems = this.props.movies
+      newItems.sort(compare)
+      this.setState({items: newItems})
     }
   }
   render() {
     console.log('render?', this)
     const franchise = this.props.franchise
     return (
-      <div className="movie-list">
-        <main>
-          <h3>{franchise.title}</h3>
-          <ul>
-            {this.state.items.map((item, idx) => (
-              <li key={item.id} onDragOver={() => this.onDragOver(idx)}>
-                <div
-                  className="drag"
-                  draggable
-                  onDragStart={e => this.onDragStart(e, idx)}
-                  onDragEnd={this.onDragEnd}
-                >
-                  <span className="content">
-                    {item.rank} {item.title}
-                  </span>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </main>
+      <div id="movie-list-page">
+        <div className="movie-list">
+          <main>
+            <h3>{franchise.title}</h3>
+            <ul>
+              {this.state.items.map((item, idx) => (
+                <li key={item.id} onDragOver={() => this.onDragOver(idx)}>
+                  <div
+                    className="drag"
+                    draggable
+                    onDragStart={e => this.onDragStart(e, idx)}
+                    onDragEnd={this.onDragEnd}
+                  >
+                    <span className="content">
+                      {item.rank} {item.title}
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </main>
+        </div>
       </div>
     )
   }
+}
+
+function compare(a, b) {
+  const rankA = a.rank
+  const rankB = b.rank
+
+  let comparison = 0
+  if (rankA > rankB) {
+    comparison = 1
+  } else if (rankA < rankB) {
+    comparison = -1
+  }
+  return comparison
 }
 
 const mapState = state => {
