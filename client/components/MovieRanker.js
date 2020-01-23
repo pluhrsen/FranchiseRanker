@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchMovieFranchise, updateMovieRanks} from '../store/movie'
+import {fetchSingleFranchise} from '../store/singleFranchise'
 
 let startObjs = [
   {rank: 2, id: 2, title: 'A New Hope'},
@@ -58,6 +59,7 @@ class MovieRanker extends Component {
   }
   componentDidMount() {
     this.props.fetchMovieFranchise(this.props.location.pathname.slice(12))
+    this.props.fetchSingleFranchise(this.props.location.pathname.slice(12))
     // if (this.props.movies) {
     //   this.props.movies.map(movie => {
     //     movieArr.push(movie)
@@ -76,10 +78,11 @@ class MovieRanker extends Component {
   }
   render() {
     console.log('render?', this)
+    const franchise = this.props.franchise
     return (
       <div className="movie-list">
         <main>
-          <h3>Franchise Title</h3>
+          <h3>{franchise.title}</h3>
           <ul>
             {this.state.items.map((item, idx) => (
               <li key={item.id} onDragOver={() => this.onDragOver(idx)}>
@@ -104,14 +107,16 @@ class MovieRanker extends Component {
 
 const mapState = state => {
   return {
-    movies: state.movies
+    movies: state.movies,
+    franchise: state.franchise
   }
 }
 
 const mapDispatch = dispatch => {
   return {
     fetchMovieFranchise: id => dispatch(fetchMovieFranchise(id)),
-    updateMovieRanks: info => dispatch(updateMovieRanks(info))
+    updateMovieRanks: info => dispatch(updateMovieRanks(info)),
+    fetchSingleFranchise: id => dispatch(fetchSingleFranchise(id))
   }
 }
 export default connect(mapState, mapDispatch)(MovieRanker)

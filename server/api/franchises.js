@@ -10,3 +10,14 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/:franchiseId', async (req, res, next) => {
+  try {
+    const franchise = await Franchise.findOne({
+      where: {id: req.params.franchiseId}
+    })
+    res.json(franchise)
+  } catch (err) {
+    next(err)
+  }
+})

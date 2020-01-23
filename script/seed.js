@@ -25,18 +25,58 @@ async function seed() {
       title: 'A New Hope',
       year: 1977,
       director: 'George Lucas',
-      franchiseId: 1
+      franchiseId: 1,
+      rank: 2
     }),
     Movie.create({
       title: 'The Empire Strikes Back',
       year: 1980,
       director: 'Irvin Kershner',
-      franchiseId: 1
+      franchiseId: 1,
+      rank: 1
     }),
     Movie.create({
       title: 'Return of the Jedi',
       year: 1980,
       director: 'Richard Marquand',
+      franchiseId: 1,
+      rank: 3
+    }),
+    Movie.create({
+      title: 'The Phantom Menace',
+      year: 1999,
+      director: 'George Lucas',
+      franchiseId: 1,
+      rank: 4
+    }),
+    Movie.create({
+      title: 'Attack of the Clones',
+      year: 2002,
+      director: 'George Lucas',
+      franchiseId: 1
+    }),
+    Movie.create({
+      title: 'Revenge of the Sith',
+      year: 2005,
+      director: 'George Lucas',
+      franchiseId: 1
+    }),
+    Movie.create({
+      title: 'The Force Awakens',
+      year: 2015,
+      director: 'JJ Abrams',
+      franchiseId: 1
+    }),
+    Movie.create({
+      title: 'The Last Jedi',
+      year: 2017,
+      director: 'Rian Johnson',
+      franchiseId: 1
+    }),
+    Movie.create({
+      title: 'The Rise of Skywalker',
+      year: 2019,
+      director: 'JJ Abrams',
       franchiseId: 1
     }),
     Movie.create({
@@ -55,6 +95,42 @@ async function seed() {
       title: 'Iron Man 2',
       year: 2010,
       director: 'Jon Favreau',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Thor',
+      year: 2011,
+      director: 'Kenneth Branagh',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Captain America',
+      year: 2011,
+      director: 'Joe Johnston',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'The Avengers',
+      year: 2012,
+      director: 'Joss Whedon',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Iron Man 3',
+      year: 2013,
+      director: 'Shane Black',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Thor: The Dark World',
+      year: 2013,
+      director: 'Alan Taylor',
+      franchiseId: 2
+    }),
+    Movie.create({
+      title: 'Captain America: Winter Soldier',
+      year: 2014,
+      director: 'Russo Brothers',
       franchiseId: 2
     })
   ])
