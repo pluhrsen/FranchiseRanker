@@ -1,26 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchMovieFranchise} from '../store/movie'
-
-let startItems = [
-  'The Phantom Menace',
-  'Attack of the Clones',
-  'Revenge of the Sith',
-  'A New Hope',
-  'Empire Strikes Back',
-  'Return of the Jedi',
-  'The Force Awakens',
-  'The Last Jedi',
-  'The Rise of Skywalker'
-]
+import {fetchMovieFranchise, updateMovieRanks} from '../store/movie'
 
 let startObjs = [
-  {rank: 1, title: 'The Phantom Menace'},
-  {rank: 2, title: 'Attack of the Clones'},
-  {rank: 3, title: 'Revenge of the Sith'},
-  {rank: 4, title: 'A New Hope'},
-  {rank: 5, title: 'Empire Strikes Back'},
-  {rank: 6, title: 'Return of the Jedi'}
+  {rank: 2, id: 2, title: 'A New Hope'},
+  {rank: 1, id: 1, title: 'Empire Strikes Back'},
+  {rank: 3, id: 3, title: 'Return of the Jedi'}
 ]
 
 class MovieRanker extends Component {
@@ -48,6 +33,28 @@ class MovieRanker extends Component {
 
     // add the dragged item after the dragged over item
     items.splice(index, 0, this.draggedItem)
+    // items[index].rank = index + 1
+
+    ///ex rank: 2 so need to update every instance 2index (3rd item) to length//
+    let newRank = index + 1
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].rank !== i + 1) {
+        items[i].rank = i + 1
+      }
+    }
+
+    // if (newRank <= items[index].rank) {
+    //   items[index].rank = newRank
+    //   for (let i = newRank; i < items.length; i++) {
+    //     items[i].rank = i + 1
+    //   }
+    // } else {
+    //   items[index].rank = newRank
+    //   for (let j = index; j >= 0; j--) {
+    //     items[j].rank = j - 1
+    //   }
+    // }
+    this.props.updateMovieRanks({list: items})
 
     this.setState({items})
   }
@@ -66,14 +73,16 @@ class MovieRanker extends Component {
           <h3>Franchise Title</h3>
           <ul>
             {this.state.items.map((item, idx) => (
-              <li key={item.rank} onDragOver={() => this.onDragOver(idx)}>
+              <li key={item.id} onDragOver={() => this.onDragOver(idx)}>
                 <div
                   className="drag"
                   draggable
                   onDragStart={e => this.onDragStart(e, idx)}
                   onDragEnd={this.onDragEnd}
                 >
-                  <span className="content">{item.title}</span>
+                  <span className="content">
+                    {item.rank} {item.title}
+                  </span>
                 </div>
               </li>
             ))}
@@ -92,7 +101,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    fetchMovieFranchise: id => dispatch(fetchMovieFranchise(id))
+    fetchMovieFranchise: id => dispatch(fetchMovieFranchise(id)),
+    updateMovieRanks: info => dispatch(updateMovieRanks(info))
   }
 }
 export default connect(mapState, mapDispatch)(MovieRanker)
