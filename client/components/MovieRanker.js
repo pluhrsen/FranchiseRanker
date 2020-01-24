@@ -85,6 +85,10 @@ class MovieRanker extends Component {
             <div>
               <Link to={`/franchises/${franchise.id}/graph`}>Go to Graph</Link>
             </div>
+            <div>
+              <div>Uh Oh...they made another one</div>
+              <button>Add Movie to List</button>
+            </div>
           </main>
         </div>
       </div>

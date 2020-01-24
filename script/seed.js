@@ -26,196 +26,228 @@ async function seed() {
       year: 1977,
       director: 'George Lucas',
       franchiseId: 1,
-      rank: 2
+      rank: 2,
+      rtRanking: 93
     }),
     Movie.create({
       title: 'The Empire Strikes Back',
       year: 1980,
       director: 'Irvin Kershner',
       franchiseId: 1,
-      rank: 1
+      rank: 1,
+      rtRanking: 94
     }),
     Movie.create({
       title: 'Return of the Jedi',
       year: 1980,
       director: 'Richard Marquand',
       franchiseId: 1,
-      rank: 3
+      rank: 3,
+      rtRanking: 82
     }),
     Movie.create({
       title: 'The Phantom Menace',
       year: 1999,
       director: 'George Lucas',
       franchiseId: 1,
-      rank: 4
+      rank: 4,
+      rtRanking: 53
     }),
     Movie.create({
       title: 'Attack of the Clones',
       year: 2002,
       director: 'George Lucas',
-      franchiseId: 1
+      franchiseId: 1,
+      rtRanking: 65
     }),
     Movie.create({
       title: 'Revenge of the Sith',
       year: 2005,
       director: 'George Lucas',
-      franchiseId: 1
+      franchiseId: 1,
+      rtRanking: 80
     }),
     Movie.create({
       title: 'The Force Awakens',
       year: 2015,
       director: 'JJ Abrams',
-      franchiseId: 1
+      franchiseId: 1,
+      rtRanking: 93
     }),
     Movie.create({
       title: 'The Last Jedi',
       year: 2017,
       director: 'Rian Johnson',
-      franchiseId: 1
+      franchiseId: 1,
+      rtRanking: 91
     }),
     Movie.create({
       title: 'The Rise of Skywalker',
       year: 2019,
       director: 'JJ Abrams',
-      franchiseId: 1
+      franchiseId: 1,
+      rtRanking: 52
     }),
     Movie.create({
       title: 'Iron Man',
       year: 2008,
       director: 'Jon Favreau',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 94
     }),
     Movie.create({
       title: 'The Incredible Hulk',
       year: 2008,
       director: 'Louis Leterrier',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 67
     }),
     Movie.create({
       title: 'Iron Man 2',
       year: 2010,
       director: 'Jon Favreau',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 73
     }),
     Movie.create({
       title: 'Thor',
       year: 2011,
       director: 'Kenneth Branagh',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 77
     }),
     Movie.create({
       title: 'Captain America',
       year: 2011,
       director: 'Joe Johnston',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 80
     }),
     Movie.create({
       title: 'The Avengers',
       year: 2012,
       director: 'Joss Whedon',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 91
     }),
     Movie.create({
       title: 'Iron Man 3',
       year: 2013,
       director: 'Shane Black',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 79
     }),
     Movie.create({
       title: 'Thor: The Dark World',
       year: 2013,
       director: 'Alan Taylor',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 66
     }),
     Movie.create({
       title: 'Captain America: Winter Soldier',
       year: 2014,
       director: 'Russo Brothers',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 90
     }),
     Movie.create({
       title: 'Guardians of the Galaxy',
       year: 2014,
       director: 'James Gunn',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 91
     }),
     Movie.create({
       title: 'Avengers: Age of Ultron',
       year: 2015,
       director: 'Joss Whedon',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 75
     }),
     Movie.create({
       title: 'Ant-Man',
       year: 2015,
       director: 'Peyton Reed',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 83
     }),
     Movie.create({
       title: 'Captain America: Civil War',
       year: 2016,
       director: 'Russo Brothers',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 91
     }),
     Movie.create({
       title: 'Doctor Strange',
       year: 2016,
       director: 'Russo Brothers',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 89
     }),
     Movie.create({
       title: 'Guardians of the Galaxy Vol 2',
       year: 2017,
       director: 'James Gunn',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 85
     }),
     Movie.create({
       title: 'Spider-Man Homecoming',
       year: 2017,
       director: 'Jon Watts',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 92
     }),
     Movie.create({
       title: 'Thor: Ragnarok',
       year: 2017,
       director: 'Taika Waititi',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 93
     }),
     Movie.create({
       title: 'Black Panther',
       year: 2018,
       director: 'Ryan Coogler',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 97
     }),
     Movie.create({
       title: 'Avengers: Infinity War',
       year: 2018,
       director: 'Russo Brothers',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 85
     }),
     Movie.create({
       title: 'Ant-Man and the Wasp',
       year: 2018,
       director: 'Peyton Reed',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 88
     }),
     Movie.create({
       title: 'Captain Marvel',
       year: 2019,
       director: 'Russo Brothers',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 78
     }),
     Movie.create({
       title: 'Avengers: Endgame',
       year: 2019,
       director: 'Russo Brothers',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 94
     }),
     Movie.create({
       title: 'Spider-Man: Far from Home',
       year: 2019,
       director: 'Jon Watts',
-      franchiseId: 2
+      franchiseId: 2,
+      rtRanking: 91
     })
   ])
 

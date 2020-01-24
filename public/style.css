@@ -93,3 +93,28 @@ img {
   display: flex;
   flex-direction: column;
 }
+
+#graph-page {
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+#graph {
+  display: flex;
+  border: 2px solid white;
+  padding: 20px;
+}
+
+#graph-label {
+  font-family: sans-serif;
+  font-size: 0.3rem;
+  text-align: center;
+  color: #fff;
+}
