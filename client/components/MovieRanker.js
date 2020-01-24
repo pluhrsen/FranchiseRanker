@@ -52,6 +52,9 @@ class MovieRanker extends Component {
 
   onDragEnd = () => {
     this.draggedIdx = null
+    let items = this.state.items
+    const franchiseId = this.props.location.pathname.slice(12)
+    this.props.updateMovieRanks({list: items, franchiseId})
   }
   componentDidMount() {
     this.props.fetchMovieFranchise(this.props.location.pathname.slice(12))
@@ -88,7 +91,7 @@ class MovieRanker extends Component {
     }
   }
   render() {
-    console.log('render?', this)
+    console.log('render?', this.state)
     const franchise = this.props.franchise
     return (
       <div id="movie-list-page">
