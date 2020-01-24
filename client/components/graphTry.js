@@ -4,8 +4,6 @@
 // import {fetchMovieFranchise} from '../store/movie'
 // import {fetchSingleFranchise} from '../store/singleFranchise'
 
-// let size = [400, 400]
-
 // const initials = function(str) {
 //   let result = ''
 //   for (let i = 0; i < str.length; i++) {
@@ -14,6 +12,19 @@
 //     }
 //   }
 //   return result.toUpperCase()
+// }
+
+// function compare(a, b) {
+//   const rankA = a.rank
+//   const rankB = b.rank
+
+//   let comparison = 0
+//   if (rankA > rankB) {
+//     comparison = 1
+//   } else if (rankA < rankB) {
+//     comparison = -1
+//   }
+//   return comparison
 // }
 
 // class MovieGraph extends Component {
@@ -31,55 +42,90 @@
 //     this.createBarChart()
 //   }
 //   createBarChart() {
-//     let movieRating = []
-//     let titles = []
+//     ///data for the chart that gets sorted///
 //     let data = []
 //     const movies = this.props.movies
 //     if (this.props.movies) {
 //       movies.map(movie => {
-//         movieRating.push(movie.rtRanking)
-//         // titles.push(initials(movie.title))
-//         titles.push(movie.title)
-//         data.push({title: movie.title, value: movie.rtRanking})
+//         data.push({
+//           title: initials(movie.title),
+//           value: movie.rtRanking
+//           // rank: movie.rank
+//         })
 //       })
+//       // data.sort(compare)
 //     }
-//     // let movieRating = {data: movieArr, yAxisAttribute: "value", xAxisAttribute: "title"}
-//     console.log('props?', movieRating)
-//     const node = this.node
-//     // const dataMax = max(movieRating)
-//     d3.select('label')
-//       .selectAll('text')
-//       .data(titles)
-//       .enter()
-//       .append('text')
-//       .text(d => d)
-//       .attr('x', (d, i) => i * 70)
-//       .attr('y', (d, i) => 10 * d)
 
+//     //helper variables for the graph///
+//     const margin = 55
+//     const width = 650 - 2 * margin
+//     const height = 400 - 2 * margin
+
+//     const svg = d3.select('svg')
+//     const chart = svg
+//       .append('g')
+//       .attr('transform', `translate(${margin}, ${margin})`)
+
+//     ////creating Y axis label
 //     const yScale = d3
 //       .scaleLinear()
 //       .domain([0, 100])
-//       .range([0, size[1]])
-//     d3.select(node)
-//       .selectAll('rect')
-//       .data(movieRating)
+//       .range([height, 0])
+
+//     ///adding label to Y Axis///
+//     chart.append('g').call(d3.axisLeft(yScale))
+
+//     ///creating X axis label///
+//     const xScale = d3
+//       .scaleBand()
+//       .range([0, width])
+//       .domain(data.map(s => s.title))
+//       .padding(0.2)
+
+//     ///adding label to X Axis///
+//     chart
+//       .append('g')
+//       .attr('transform', `translate(0, ${height})`)
+//       .call(d3.axisBottom(xScale))
+
+//     ///creates the bars for the chart///
+//     chart
+//       .selectAll()
+//       .data(data)
 //       .enter()
 //       .append('rect')
-
-//     d3.select(node)
-//       .selectAll('rect')
-//       .data(movieRating)
-//       .exit()
-//       .remove()
-
-//     d3.select(node)
-//       .selectAll('rect')
-//       .data(movieRating)
 //       .style('fill', '#fe9922')
-//       .attr('x', (d, i) => i * 25)
-//       .attr('y', d => size[1] - yScale(d))
-//       .attr('height', d => yScale(d))
-//       .attr('width', 20)
+//       .attr('x', s => xScale(s.title))
+//       .attr('y', s => yScale(s.value))
+//       .attr('height', s => height - yScale(s.value))
+//       .attr('width', xScale.bandwidth())
+
+//     ///adds the horizontal lines to the graph///
+//     chart
+//       .append('g')
+//       .attr('class', 'grid')
+//       .call(
+//         d3
+//           .axisLeft()
+//           .scale(yScale)
+//           .tickSize(-width, 0, 0)
+//           .tickFormat('')
+//       )
+//     ///axis labels//
+//     svg
+//       .append('text')
+//       .attr('x', -(height / 2) - margin)
+//       .attr('y', margin / 2.4)
+//       .attr('transform', 'rotate(-90)')
+//       .attr('text-anchor', 'middle')
+//       .text('Rotten Tomato Rating (%)')
+
+//     svg
+//       .append('text')
+//       .attr('x', width / 2 + margin)
+//       .attr('y', 395)
+//       .attr('text-anchor', 'middle')
+//       .text('Your Ranking VS Rotten Tomatoes')
 //   }
 //   render() {
 //     const franchise = this.props.franchise
@@ -87,20 +133,13 @@
 //       <div id="graph-page">
 //         <main>
 //           <img src={franchise.imageUrl} />
-//           <svg
-//             ref={node => (this.node = node)}
-//             width={650}
-//             height={400}
-//             id="graph"
-//           ></svg>
-//           <label id="graph-label"></label>
+//           <svg width={650} height={400} id="graph" />
+//           <label id="graph-label" />
 //         </main>
 //       </div>
 //     )
 //   }
 // }
-
-// // return <div>Graph go HERE</div>
 
 // const mapState = state => {
 //   return {

@@ -4,33 +4,13 @@ import * as d3 from 'd3'
 import {fetchMovieFranchise} from '../store/movie'
 import {fetchSingleFranchise} from '../store/singleFranchise'
 
-const initials = function(str) {
-  let result = ''
-  for (let i = 0; i < str.length; i++) {
-    if (i === 0 || str[i - 1] === ' ') {
-      result += str[i]
-    }
-  }
-  return result.toUpperCase()
-}
-
-function compare(a, b) {
-  const rankA = a.rank
-  const rankB = b.rank
-
-  let comparison = 0
-  if (rankA > rankB) {
-    comparison = 1
-  } else if (rankA < rankB) {
-    comparison = -1
-  }
-  return comparison
-}
-
 class MovieGraph extends Component {
   constructor(props) {
     super(props)
     this.createBarChart = this.createBarChart.bind(this)
+  }
+  state = {
+    items: []
   }
   componentDidMount() {
     const locationId = this.props.location.pathname.slice(12, -6)
@@ -39,23 +19,14 @@ class MovieGraph extends Component {
     this.createBarChart()
   }
   componentDidUpdate() {
+    if (this.props.movies && this.state.items !== this.props.movies) {
+      let newItems = this.props.movies
+      newItems.sort(compare)
+      this.setState({items: newItems})
+    }
     this.createBarChart()
   }
   createBarChart() {
-    ///data for the chart that gets sorted///
-    let data = []
-    const movies = this.props.movies
-    if (this.props.movies) {
-      movies.map(movie => {
-        data.push({
-          title: initials(movie.title),
-          value: movie.rtRanking
-          // rank: movie.rank
-        })
-      })
-      // data.sort(compare)
-    }
-
     //helper variables for the graph///
     const margin = 55
     const width = 650 - 2 * margin
@@ -79,7 +50,7 @@ class MovieGraph extends Component {
     const xScale = d3
       .scaleBand()
       .range([0, width])
-      .domain(data.map(s => s.title))
+      .domain(this.state.items.map(s => initials(s.title)))
       .padding(0.2)
 
     ///adding label to X Axis///
@@ -91,13 +62,13 @@ class MovieGraph extends Component {
     ///creates the bars for the chart///
     chart
       .selectAll()
-      .data(data)
+      .data(this.state.items)
       .enter()
       .append('rect')
       .style('fill', '#fe9922')
-      .attr('x', s => xScale(s.title))
-      .attr('y', s => yScale(s.value))
-      .attr('height', s => height - yScale(s.value))
+      .attr('x', s => xScale(initials(s.title)))
+      .attr('y', s => yScale(s.rtRanking))
+      .attr('height', s => height - yScale(s.rtRanking))
       .attr('width', xScale.bandwidth())
 
     ///adds the horizontal lines to the graph///
@@ -141,6 +112,28 @@ class MovieGraph extends Component {
   }
 }
 
+const initials = function(str) {
+  let result = ''
+  for (let i = 0; i < str.length; i++) {
+    if (i === 0 || str[i - 1] === ' ') {
+      result += str[i]
+    }
+  }
+  return result.toUpperCase()
+}
+
+function compare(a, b) {
+  const rankA = a.rank
+  const rankB = b.rank
+
+  let comparison = 0
+  if (rankA > rankB) {
+    comparison = 1
+  } else if (rankA < rankB) {
+    comparison = -1
+  }
+  return comparison
+}
 // return <div>Graph go HERE</div>
 
 const mapState = state => {
