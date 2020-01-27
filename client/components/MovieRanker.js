@@ -83,7 +83,11 @@ class MovieRanker extends Component {
               ))}
             </ul>
             <div>
-              <Link to={`/franchises/${franchise.id}/graph`}>Go to Graph</Link>
+              <button>
+                <Link to={`/franchises/${franchise.id}/graph`}>
+                  Compare your ranking to Rotten Tomatoes
+                </Link>
+              </button>
             </div>
             <div>
               <div>Uh Oh...they made another one</div>

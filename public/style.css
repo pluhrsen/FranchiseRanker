@@ -85,13 +85,15 @@ img {
 
 #franchise-link {
   display: flex;
-  margin: 15px;
-  padding: 5px;
+  margin: 25px;
+  padding: 20px;
 }
 
 #franchise-page {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
+  align-content: space-around;
 }
 
 #graph-page {
